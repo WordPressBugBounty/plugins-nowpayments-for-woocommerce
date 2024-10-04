@@ -1,0 +1,1 @@
+# plugins-nowpayments-for-woocommerce
