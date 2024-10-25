@@ -221,7 +221,7 @@ class NPWC_Gateway extends WC_Payment_Gateway {
         $request = json_decode( $request, true );
 
         //Invalid Call, Order ID doesn't exist.
-        if( !array_key_exists( 'order_id', $request ) ) {
+        if( ! is_array( $request ) || ! array_key_exists( 'order_id', $request ) ) {
             die( 'Invalid Call' );
         }
 

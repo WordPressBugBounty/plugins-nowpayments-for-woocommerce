@@ -4,7 +4,7 @@ Donate link: https://coderpress.co/products/nowpayments-for-woocommerce/?utm_sou
 Tags: bitcoin, ethereum, litecoin, crypto, cryptocurrency
 Requires at least: 4.9
 Tested up to: 6.6
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,10 +13,10 @@ Allow users to checkout with 300+ crypto currencies.
 
 == Description ==
 
-[Get Pro](https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-get-pro) | [Pro Live Demo](https://nowpayments.coderpress.co/shop/) | [Documentation](https://coderpress.co/docs/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-documentation)
+[Get Pro 👑](https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-get-pro) | [Pro Live Demo 💻](https://nowpayments.coderpress.co/shop/) | [Documentation 📃](https://coderpress.co/docs/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-documentation)
 
-NOWPayments for WooCommerce, It's very easy and simple to use with WooCommerce.
-Fully supported by the SCI Intelligencia team with features that are necessary to keep check.
+NOWPayments for WooCommerce, It's very easy crypto pluign and simple to use with WooCommerce, if you are logging for WooCommerce gateway that can accept lots of cryptocurrencies, NOWPayments is the right place.
+Fully supported by the [CoderPress](https://www.coderpress.co/) team with features that are necessary to keep check.
 
 * Accept 300+ cryptocurrencies converted into the ones you trust.
 * Receive instant payouts to your wallet or bank account.
@@ -210,11 +210,15 @@ Contact: smusman98@gmail.com
 
 == Changelog ==
 
+= 1.2.1 - Oct 25, 2024 =
+* Updated 🚀 - Updated SDK to latest version.
+* FIX 🪲 - IPN Callback was not checking whether it's an array or not.
+
 = 1.2.1 - Oct 02, 2024 =
 * Updated 🚀 - Updated SDK to latest version.
 
 = 1.2.0 - Sept 14, 2024 =
-* Updated ✨ - Added PHP 8.x Support.
+* Updated 🚀 - Added PHP 8.x Support.
 
 = 1.1.3 - Sept 11, 2024 =
 * Updated 🚀 - Updated SDK to latest version.

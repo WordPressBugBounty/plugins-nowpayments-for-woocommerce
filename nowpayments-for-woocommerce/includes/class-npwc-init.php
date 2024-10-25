@@ -255,9 +255,11 @@ class NPWC_Init {
     public function add_midnight_deals_banner() {
 
         ?>
-            <a href="https://coderpress.co/products/midnight-deals-for-woocommerce/?utm_source=npwc&utm_medium=product-edit-page" target="_blank" style="text-decoration: none;">
-                <img src="<?php echo esc_attr( NPWC_PLUGIN_URL . '/assets/images/midnight-deals-settings.png' ) ?>" style="width: 100%; margin: 0 15px;" />
-            </a>
+            <div class="midnight-deals-for-woocommerce-wc-product-page">
+                <a href="<?php echo admin_url( '/plugin-install.php?tab=plugin-information&plugin=midnight-deals-for-woocommerce&TB_iframe=true&width=772&height=644' ); ?>" class="thickbox open-plugin-details-modal" aria-label="More information about Midnight Deals for WooCommerce" data-title="Midnight Deals for WooCommerce">
+                    <img src="<?php echo esc_attr( NPWC_PLUGIN_URL . '/assets/images/midnight-deals-settings.png' ) ?>" style="width: 100%; margin: 0 15px;" />
+                </a>
+            </div>
         <?php
 
     }
