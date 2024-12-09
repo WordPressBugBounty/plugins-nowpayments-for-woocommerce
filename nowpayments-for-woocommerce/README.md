@@ -13,7 +13,9 @@ Allow users to checkout with 300+ crypto currencies.
 
 == Description ==
 
-[Get Pro 👑](https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-get-pro) | [Pro Live Demo 💻](https://nowpayments.coderpress.co/shop/) | [Documentation 📃](https://coderpress.co/docs/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-documentation)
+[Get Pro 👑](https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-get-pro) | [Pro Live Demo](https://nowpayments.coderpress.co/shop/) | [Documentation](https://coderpress.co/docs/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-documentation)
+
+https://youtu.be/-vz3n-UMyTY
 
 NOWPayments for WooCommerce, It's very easy crypto pluign and simple to use with WooCommerce, if you are logging for WooCommerce gateway that can accept lots of cryptocurrencies, NOWPayments is the right place.
 Fully supported by the [CoderPress](https://www.coderpress.co/) team with features that are necessary to keep check.
@@ -32,17 +34,10 @@ Fully supported by the [CoderPress](https://www.coderpress.co/) team with featur
 * Attractive User Interface
 * Easy Setup
 * Open for Suggestions
-* [Go Pro](https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-go-pro)
-* [Live Demo](https://nowpayments.coderpress.co/shop/)
-
-
-https://youtu.be/-vz3n-UMyTY
+* [Go Pro👑](https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-go-pro)
 
 = Our other plugins =
-* [Coinbase Commerce for WooCommerce](https://wordpress.org/plugins/commerce-coinbase-for-woocommerce/)
-* [Coinbase Commerce for Contact Form 7](https://wordpress.org/plugins/coinbase-commerce-for-contact-form-7/)
-* [Posts and Products Views for WooCommerce](https://wordpress.org/plugins/posts-and-products-views/)
-* [Emails Blacklist for Everest Forms](https://wordpress.org/plugins/emails-blacklist-everest-forms/)
+* [Midnight Deals for WooCommerce](https://coderpress.co/products/midnight-deals-for-woocommerce/?utm_source=npwc&utm_medium=readme-midnight-deals-for-woocommerce)
 
 = Supported Coins =
 = Coin Name Popular Coins =
