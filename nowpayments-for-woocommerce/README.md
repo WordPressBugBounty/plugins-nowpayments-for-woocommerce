@@ -4,7 +4,7 @@ Donate link: https://coderpress.co/products/nowpayments-for-woocommerce/?utm_sou
 Tags: bitcoin, ethereum, litecoin, crypto, cryptocurrency
 Requires at least: 4.9
 Tested up to: 6.6
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -205,7 +205,10 @@ Contact: smusman98@gmail.com
 
 == Changelog ==
 
-= 1.2.1 - Oct 25, 2024 =
+= 1.2.3 - Jan 05, 2025 =
+* Updated 🚀 - Updated SDK to latest version.
+
+= 1.2.2 - Oct 25, 2024 =
 * Updated 🚀 - Updated SDK to latest version.
 * FIX 🪲 - IPN Callback was not checking whether it's an array or not.
 
