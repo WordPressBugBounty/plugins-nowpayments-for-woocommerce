@@ -125,9 +125,9 @@ class NPWC_Init {
 
         }
 
-        if( ! class_exists( 'MDWC_Init' ) ) {
+        if( ! class_exists( 'YooAnalytics' ) ) {
 
-            add_action( 'woocommerce_product_options_pricing', array( $this, 'add_midnight_deals_banner' ) );
+            add_action( 'woocommerce_product_options_pricing', array( $this, 'add_yooanalytics_banner' ) );
 
         } 
 
@@ -248,16 +248,17 @@ class NPWC_Init {
 	}
 
     /**
-     * Add Midnight Deals Banner | Action Callback
+     * Add YooAnalytics Banner | Action Callback
      * 
-     * @since 1.2.1
+     * @since 1.2.5
      */
-    public function add_midnight_deals_banner() {
+    public function add_yooanalytics_banner() {
 
         ?>
-            <div class="midnight-deals-for-woocommerce-wc-product-page">
-                <a href="<?php echo admin_url( '/plugin-install.php?tab=plugin-information&plugin=midnight-deals-for-woocommerce&TB_iframe=true&width=772&height=644' ); ?>" class="thickbox open-plugin-details-modal" aria-label="More information about Midnight Deals for WooCommerce" data-title="Midnight Deals for WooCommerce">
-                    <img src="<?php echo esc_attr( NPWC_PLUGIN_URL . '/assets/images/midnight-deals-settings.png' ) ?>" style="width: 100%; margin: 0 15px;" />
+            <div class="yooanalytics-woocommerce-wc-product-page" style="padding: 10px">
+                <h3> 📊 Track your site's Views, Visitors & WooCommerce Purchase Journey for Free.</h3>
+                <a href="<?php echo admin_url( '/plugin-install.php?tab=plugin-information&plugin=yooanalytics&TB_iframe=true&width=772&height=644' ); ?>" class="thickbox open-plugin-details-modal" aria-label="More information about Midnight Deals for WooCommerce" data-title="Midnight Deals for WooCommerce">
+                    <img src="<?php echo esc_attr( NPWC_PLUGIN_URL . '/assets/images/yooanalytics.png' ) ?>" style="width: 100%;" />
                 </a>
             </div>
         <?php
