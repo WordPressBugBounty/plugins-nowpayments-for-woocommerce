@@ -3,8 +3,8 @@ Contributors: smusman98
 Donate link: https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=donate-link
 Tags: bitcoin, ethereum, litecoin, crypto, cryptocurrency
 Requires at least: 4.9
-Tested up to: 6.7
-Stable tag: 1.2.5
+Tested up to: 6.8
+Stable tag: 1.2.6
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,7 +13,7 @@ Allow users to checkout with 300+ crypto currencies.
 
 == Description ==
 
-[Get Pro 👑](https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-get-pro) | [Pro Live Demo](https://nowpayments.coderpress.co/shop/) | [Documentation](https://coderpress.co/docs/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-documentation)
+[👑 Get Pro](https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-get-pro) | [Pro Live Demo](https://nowpayments.coderpress.co/shop/) | [Documentation](https://coderpress.co/docs/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=readme-documentation)
 
 https://youtu.be/-vz3n-UMyTY
 
@@ -26,10 +26,16 @@ Fully supported by the [CoderPress](https://www.coderpress.co/) team with featur
 * Save on fees: cheapest on the crypto market.
 * Feel the freedom of choice with our variety of tools.
 
-**Premium**
+**NOWPayments for WooCommerce Pro  [🏷️Pro]**
 
-* Top 5 Currency Icons on Products
-* Top 5 Currency Icons on Shop page
+* Crypto Currency Icons on Products
+* Crypto Currency Icons on Shop page
+* Ticker
+* Crypto Currency Card
+* Crypto Currency Pricing Tabl
+* Crypto Currency Grap
+* Crypto Currency Labe
+* Crypto Currency Tabl
 * Priority Support
 * Attractive User Interface
 * Easy Setup
@@ -204,6 +210,9 @@ Contact: smusman98@gmail.com
 1. You're all ready to use NOWPayments
 
 == Changelog ==
+
+= 1.2.5 - Jul 12, 2025 =
+* Tweak ✨ - Added Pro Screenshots.
 
 = 1.2.5 - Mar 09, 2025 =
 * Tweak ✨ - UI Tweak.
