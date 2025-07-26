@@ -4,7 +4,7 @@ Donate link: https://coderpress.co/products/nowpayments-for-woocommerce/?utm_sou
 Tags: bitcoin, ethereum, litecoin, crypto, cryptocurrency
 Requires at least: 4.9
 Tested up to: 6.8
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -211,7 +211,10 @@ Contact: smusman98@gmail.com
 
 == Changelog ==
 
-= 1.2.5 - Jul 12, 2025 =
+= 1.2.7 - Jul 26, 2025 =
+* Tweak ✨ - Removed Pro Screenshots.
+
+= 1.2.6 - Jul 12, 2025 =
 * Tweak ✨ - Added Pro Screenshots.
 
 = 1.2.5 - Mar 09, 2025 =

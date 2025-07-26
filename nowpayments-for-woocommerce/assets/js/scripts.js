@@ -42,72 +42,7 @@
     var newRow = jQuery( 
         `<tr valign="top">
             <th scope="row" class="titledesc">
-                <label for="new_field">Crypto Currency Ticker</label>
-            </th>
-            <td class="forminp">
-                <a href="https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=crypto-currency-ticker" target="_blank">
-                    <img src="${npwc.images}/ticker.gif" width="400px" />
-                </a>
-            </td>
-        </tr>` );
-    targetRow.after( newRow );
-
-    var newRow = jQuery( 
-        `<tr valign="top">
-            <th scope="row" class="titledesc">
-                <label for="new_field">Crypto Currency Label</label>
-            </th>
-            <td class="forminp">
-                <a href="https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=crypto-currency-label" target="_blank">
-                    <img src="${npwc.images}/label.png" width="400px" />
-                </a>
-            </td>
-        </tr>` );
-    targetRow.after( newRow );
-
-    var newRow = jQuery( 
-        `<tr valign="top">
-            <th scope="row" class="titledesc">
-                <label for="new_field">Crypto Currency Table</label>
-            </th>
-            <td class="forminp">
-                <a href="https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=crypto-currency-table" target="_blank">
-                    <img src="${npwc.images}/table.png" width="400px" />
-                </a>
-            </td>
-        </tr>` );
-    targetRow.after( newRow );
-
-    var newRow = jQuery( 
-        `<tr valign="top">
-            <th scope="row" class="titledesc">
-                <label for="new_field">Crypto Currency Graph</label>
-            </th>
-            <td class="forminp">
-                <a href="https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=crypto-currency-graph" target="_blank">
-                    <img src="${npwc.images}/graph.gif" width="400px" />
-                </a>
-            </td>
-        </tr>` );
-    targetRow.after( newRow );
-
-    var newRow = jQuery( 
-        `<tr valign="top">
-            <th scope="row" class="titledesc">
-                <label for="new_field">Crypto Currency Conversion Card</label>
-            </th>
-            <td class="forminp">
-                <a href="https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=crypto-currency-conversion-card" target="_blank">
-                    <img src="${npwc.images}/card.png" width="400px" />
-                </a>
-            </td>
-        </tr>` );
-    targetRow.after( newRow );
-
-    var newRow = jQuery( 
-        `<tr valign="top">
-            <th scope="row" class="titledesc">
-                <label for="new_field">Pro Shop Page Preview</label>
+                <label for="new_field">Pro Product Page Preview</label>
             </th>
             <td class="forminp">
                 <a href="https://coderpress.co/products/nowpayments-for-woocommerce/?utm_source=npwc&utm_medium=shop-preview" target="_blank">
