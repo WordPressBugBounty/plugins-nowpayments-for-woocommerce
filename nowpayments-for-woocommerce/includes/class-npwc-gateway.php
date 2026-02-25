@@ -1,14 +1,14 @@
 <?php
 /**
- * NPWC gateway
+ * NOWPayments WooCommerce gateway.
  *
- * @package NOWPayments For WooCommerce
+ * @package NowPayments_For_WooCommerce
  */
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Class NPWC gateway
+ * NOWPayments payment gateway for WooCommerce.
  */
 class NPWC_Gateway extends WC_Payment_Gateway {
 
@@ -27,7 +27,7 @@ class NPWC_Gateway extends WC_Payment_Gateway {
 		$this->method_title       = 'NOWPayments';
 		$this->description        = $this->get_option( 'description' );
 		$this->has_fields         = false;
-		$this->method_description = 'Allows customer to checkout with 150+ crypto currencies.';
+		$this->method_description = 'Allows customer to checkout with 300+ crypto currencies.';
 		$this->init_form_fields();
 		$this->init_settings();
 
@@ -140,13 +140,13 @@ class NPWC_Gateway extends WC_Payment_Gateway {
 
 		parent::process_admin_options();
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies nonce for payment gateway settings.
 		if ( empty( $_POST['woocommerce_nowpayments_live_api_key'] ) ) {
 			WC_Admin_Settings::add_error( 'Error: Live API Key is required.' );
 			return false;
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies nonce for payment gateway settings.
 		if ( isset( $_POST['woocommerce_nowpayments_sandbox'] ) && empty( $_POST['woocommerce_nowpayments_sandbox_api_key'] ) ) {
 			WC_Admin_Settings::add_error( 'Error: SandBox API Key is required.' );
 			return false;
@@ -154,11 +154,10 @@ class NPWC_Gateway extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Let's Process the Payment xD
+	 * Process the payment and redirect to NOWPayments.
 	 *
-	 * @param int $order_id Order it.
-	 *
-	 * @return array|void
+	 * @param int $order_id WooCommerce order ID.
+	 * @return array|void Redirect data or void on failure.
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -178,13 +177,12 @@ class NPWC_Gateway extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Off-Site checkout
+	 * Off-site checkout: build redirect URL for NOWPayments.
 	 *
-	 * @param bool   $is_live Is now paymeny live.
-	 * @param string $api_key Now payment api key.
-	 * @param object $order WC order or mixed.
-	 *
-	 * @return array
+	 * @param bool     $is_live True for live, false for sandbox.
+	 * @param string   $api_key API key.
+	 * @param WC_Order $order   Order object.
+	 * @return array Result with redirect URL.
 	 * @since 1.0
 	 * @version 1.0
 	 */
@@ -214,7 +212,7 @@ class NPWC_Gateway extends WC_Payment_Gateway {
 		$parameters['products'] = $items;
 		$parameters             = apply_filters( 'wcnp_checkout_parameters', $parameters );
 
-		$nowpayments  = new NPEC_API( $is_live, $api_key );
+		$nowpayments  = new NPEC_API( $api_key, $is_live );
 		$redirect_url = $nowpayments->off_page_checkout( $parameters );
 
 		return array(
@@ -226,53 +224,84 @@ class NPWC_Gateway extends WC_Payment_Gateway {
 	/**
 	 * Webhook Catcher | action_hook callback
 	 *
+	 * Verifies X-NOWPayments-Sig (HMAC-SHA512) when IPN secret is set to prevent spoofed payment confirmations.
+	 *
 	 * @since 1.0
 	 * @version 1.0
 	 */
 	public function ipn_callback() {
 
-		$request = file_get_contents( 'php://input' );
-		$request = json_decode( $request, true );
+		$raw     = file_get_contents( 'php://input' );
+		$request = json_decode( $raw, true );
 
-		// Invalid Call, Order ID doesn't exist.
-		if ( ! array_key_exists( 'order_id', $request ) ) {
-			die( 'Invalid Call' );
+		if ( ! is_array( $request ) || ! array_key_exists( 'order_id', $request ) ) {
+			status_header( 400 );
+			wp_die( 'Invalid Call', 'Invalid Call', array( 'response' => 400 ) );
+		}
+
+		$is_sandbox = ( $this->get_option( 'sandbox' ) === 'yes' );
+		$ipn_secret = $is_sandbox ? $this->get_option( 'sandbox_ipn_key', '' ) : $this->get_option( 'live_ipn_key', '' );
+
+		if ( '' !== $ipn_secret ) {
+			if ( empty( $_SERVER['HTTP_X_NOWPAYMENTS_SIG'] ) ) {
+				status_header( 401 );
+				wp_die( 'Invalid signature', 'Unauthorized', array( 'response' => 401 ) );
+			}
+			$received   = sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_NOWPAYMENTS_SIG'] ) );
+			$sorted     = $this->npwc_sort_array_recursive( $request );
+			$calculated = hash_hmac( 'sha512', wp_json_encode( $sorted, JSON_UNESCAPED_SLASHES ), trim( $ipn_secret ) );
+			if ( ! hash_equals( $calculated, $received ) ) {
+				status_header( 401 );
+				wp_die( 'Invalid signature', 'Unauthorized', array( 'response' => 401 ) );
+			}
 		}
 
 		$order = wc_get_order( $request['order_id'] );
+		if ( ! $order || ! ( $order instanceof WC_Order ) ) {
+			status_header( 404 );
+			wp_die( 'Order not found', 'Not Found', array( 'response' => 404 ) );
+		}
+
+		if ( $order->get_payment_method() !== $this->id ) {
+			status_header( 400 );
+			wp_die( 'Not a NOWPayments order', 'Bad Request', array( 'response' => 400 ) );
+		}
+
+		$payment_status = isset( $request['payment_status'] ) ? sanitize_text_field( $request['payment_status'] ) : '';
 
 		// finished - the funds have reached your personal address and the payment is finished.
-		if ( 'finished' === $request['payment_status'] ) {
+		if ( 'finished' === $payment_status ) {
 			$order->update_status( 'completed', 'NOWPayments finished IPN Call.' );
 		}
 
 		// refunded - the funds were refunded back to the user.
-		if ( 'refunded' === $request['payment_status'] ) {
+		if ( 'refunded' === $payment_status ) {
 			$order->update_status( 'refunded', 'NOWPayments refunded IPN Call.' );
 		}
 
 		// failed - the payment wasn't completed due to the error of some kind.
-		if ( 'failed' === $request['payment_status'] ) {
+		if ( 'failed' === $payment_status ) {
 			$order->update_status( 'failed', 'NOWPayments failed IPN Call.' );
 		}
+
+		status_header( 200 );
+		wp_die( 'OK', 'OK', array( 'response' => 200 ) );
 	}
 
-}
-
-if ( ! function_exists( 'add_nowpayments_to_wc' ) ) :
-	// phpcs:disable Universal.Files.SeparateFunctionsFromOO.Mixed
 	/**
-	 * Adds Gateway into WooCommerce
+	 * Recursively sort array by keys (for IPN signature verification).
 	 *
-	 * @param array $gateways Set of gateways.
-	 *
-	 * @return array
+	 * @param mixed $data Data.
+	 * @return mixed
 	 */
-	function add_nowpayments_to_wc( $gateways ) {
-		$gateways[] = 'NPWC_Gateway';
-		return $gateways;
+	private function npwc_sort_array_recursive( $data ) {
+		if ( ! is_array( $data ) ) {
+			return $data;
+		}
+		ksort( $data );
+		foreach ( $data as $k => $v ) {
+			$data[ $k ] = $this->npwc_sort_array_recursive( $v );
+		}
+		return $data;
 	}
-	// phpcs:enable Universal.Files.SeparateFunctionsFromOO.Mixed
-endif;
-
-add_filter( 'woocommerce_payment_gateways', 'add_nowpayments_to_wc' );
+}
