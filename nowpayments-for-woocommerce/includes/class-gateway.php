@@ -132,11 +132,13 @@ class NPWC_Gateway extends WC_Payment_Gateway {
 
         parent::process_admin_options();
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies nonce for payment gateway settings.
         if ( empty( $_POST['woocommerce_nowpayments_live_api_key'] ) ) {
             WC_Admin_Settings::add_error( 'Error: Live API Key is required.' );
             return false;
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verifies nonce for payment gateway settings.
         if( isset( $_POST['woocommerce_nowpayments_sandbox'] ) && empty( $_POST['woocommerce_nowpayments_sandbox_api_key'] ) ) {
             WC_Admin_Settings::add_error( 'Error: SandBox API Key is required.' );
             return false;
